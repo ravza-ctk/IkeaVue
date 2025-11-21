@@ -10,6 +10,10 @@
       <CategoriesSlider /> 
     </main>
 
+    <main class="main-content">
+      <Card /> 
+    </main>
+
     <Footer />
   </div>
 </template>
@@ -19,6 +23,7 @@ import HeaderComponent from "./components/pages/Header.vue";
 import Footer from "./components/pages/Footer.vue";
 import SignupLogin from "./components/pages/SignupLogin.vue";
 import CategoriesSlider from "./components/pages/CategoriesSlider.vue";
+import Card from "./components/pages/Card.vue";
 
 export default {
   name: "App",
@@ -26,7 +31,8 @@ export default {
     HeaderComponent,
     Footer,
     SignupLogin,
-    CategoriesSlider
+    CategoriesSlider,
+    Card
   }
 };
 </script>
