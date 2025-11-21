@@ -6,6 +6,10 @@
       <SignupLogin /> 
     </main>
 
+    <main class="main-content">
+      <CategoriesSlider /> 
+    </main>
+
     <Footer />
   </div>
 </template>
@@ -14,13 +18,15 @@
 import HeaderComponent from "./components/pages/Header.vue";
 import Footer from "./components/pages/Footer.vue";
 import SignupLogin from "./components/pages/SignupLogin.vue";
+import CategoriesSlider from "./components/pages/CategoriesSlider.vue";
 
 export default {
   name: "App",
   components: {
     HeaderComponent,
     Footer,
-    SignupLogin
+    SignupLogin,
+    CategoriesSlider
   }
 };
 </script>
