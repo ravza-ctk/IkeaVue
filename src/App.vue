@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <HeaderComponent />
+    <HeaderComponent @open-modal="isModalOpen = true" /> 
+    
+    <ModalCategories 
+      :is-open="isModalOpen" 
+      @close="isModalOpen = false" 
+    />
 
     <main class="main-content">
       <SignupLogin /> 
@@ -19,11 +24,13 @@
 </template>
 
 <script>
+import { ref } from 'vue'; 
 import HeaderComponent from "./components/pages/Header.vue";
 import Footer from "./components/pages/Footer.vue";
 import SignupLogin from "./components/pages/SignupLogin.vue";
 import CategoriesSlider from "./components/pages/CategoriesSlider.vue";
 import Card from "./components/pages/Card.vue";
+import ModalCategories from './components/pages/ModalCategories.vue'; 
 
 export default {
   name: "App",
@@ -32,12 +39,21 @@ export default {
     Footer,
     SignupLogin,
     CategoriesSlider,
-    Card
+    Card,
+    ModalCategories 
+  },
+  setup() {
+    const isModalOpen = ref(false); 
+
+    return {
+      isModalOpen 
+    };
   }
 };
 </script>
 
 <style>
+
 html, body {
   margin: 0;
   padding: 0;
@@ -52,14 +68,12 @@ html, body {
   
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; 
 }
 
 .main-content {
-  flex: 1;
-  
+  flex: 1; 
   margin-top: 140px; 
-  
   width: 100%;
 }
 </style>
