@@ -71,20 +71,17 @@ export default { name: "Footer" };
 <style scoped>
 
 
-/* FOOTER - EKRANI KAPLAMASI İÇİN ÖZEL AYAR */
 .footer {
-  /* Ekranın tamamını kapla (Viewport Width) */
+
   width: 100vw; 
   
-  /* Ortala ve kenarlara taşır */
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
   
-  /* Arka plan ve boşluklar */
-  background: #f7f7f7; /* İstediğin açık gri renk */
+  background: #f7f7f7; 
   padding: 50px 0;
   border-top: 1px solid #ddd;
 }
@@ -97,7 +94,6 @@ export default { name: "Footer" };
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* Gap'i 40px'ten 20px'e düşürdük ki sığması kolaylaşsın */
   gap: 0px; 
 }
 
@@ -108,24 +104,17 @@ html, body {
 }
 
 .footer-col {
-  /* ÖNEMLİ DEĞİŞİKLİK: 
-     Eskiden: flex: 1 1 200px; (Bu en az 200px yer istiyordu)
-     Yeni: flex: 1; (Mevcut alanı eşit paylaşır) 
-  */
   flex: 1;
-  
-  /* Min-width'i düşürdük, böylece ekran daralınca hemen aşağı düşmez */
   min-width: 140px; 
 }
 
-/* İkinci görseldeki gibi en soldaki yazı alanı diğerlerinden biraz daha geniş olsun */
 .footer-col:first-child {
-  flex: 1.5; /* Diğer sütunlardan 1.5 kat daha geniş olmaya çalışır */
-  min-width: 250px; /* Yazıların çok sıkışmaması için */
+  flex: 1.5; 
+  min-width: 250px; 
 }
 
 .footer-col h3 {
-  font-size: 16px; /* Başlıkları fotodaki gibi biraz kibarlaştırdık */
+  font-size: 16px; 
   font-weight: bold;
   margin-bottom: 16px;
   color: #111;
@@ -153,13 +142,13 @@ html, body {
   line-height: 1.5;
   margin-bottom: 16px;
   color: #444;
-  max-width: 90%; /* Yazıların çok uzamasını engeller */
+  max-width: 90%; 
 }
 
 button {
   padding: 10px 24px;
   background: #111;
-  border-radius: 24px; /* Butonu daha oval yaptık */
+  border-radius: 24px; 
   color: white;
   border: none;
   cursor: pointer;
@@ -173,15 +162,13 @@ button:hover {
   background: #333;
 }
 
-/* Tablet ve Mobil Ayarları */
 @media (max-width: 992px) {
   .footer-container {
     gap: 30px;
   }
   
-  /* Tablette 5'i yan yana sığmazsa 2 veya 3'lü gruplar haline gelsin */
   .footer-col {
-    flex: 1 1 40%; /* Genişliği %40 yapar */
+    flex: 1 1 40%;
     min-width: 200px;
   }
 }

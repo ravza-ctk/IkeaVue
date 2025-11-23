@@ -79,25 +79,22 @@ body, html {
   background-color: #ffffff !important;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Yatay taşmayı engelle */
+  overflow-x: hidden; 
 }
 </style>
 
 <style scoped>
-/* FONTLAR (Sistem fontlarını kullanır, temiz durur) */
 * {
   font-family: "Noto Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   box-sizing: border-box;
 }
 
-/* ANA KAPLAYICI - EKRANI KAPLA */
 .page-wrapper {
   width: 100vw;
   min-height: 100vh;
   background-color: #ffffff !important;
   color: #111;
   
-  /* Container dışına taşma hilesi */
   position: relative;
   left: 50%;
   right: 50%;
@@ -106,21 +103,20 @@ body, html {
   
   display: flex;
   justify-content: center;
-  padding-top: 20px; /* Üstten biraz boşluk */
+  padding-top: 20px; 
   padding-bottom: 80px;
 }
 
 .content-container {
   width: 100%;
-  max-width: 1150px; /* IKEA genişlik standardı */
+  max-width: 1150px;
   padding: 0 25px;
 }
 
-/* BREADCRUMB */
 .breadcrumb {
   font-size: 12px;
   color: #484848;
-  margin-bottom: 15px; /* Mavi kutuyla arasındaki boşluk */
+  margin-bottom: 15px; 
   display: flex;
   align-items: center;
 }
