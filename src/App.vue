@@ -19,6 +19,10 @@
       <Card /> 
     </main>
 
+    <main class="main-content">
+      <Order /> 
+    </main>
+
     <Footer />
   </div>
 </template>
@@ -31,6 +35,7 @@ import SignupLogin from "./components/pages/SignupLogin.vue";
 import CategoriesSlider from "./components/pages/CategoriesSlider.vue";
 import Card from "./components/pages/Card.vue";
 import ModalCategories from './components/pages/ModalCategories.vue'; 
+import Order from './components/pages/Order.vue';
 
 export default {
   name: "App",
@@ -40,7 +45,8 @@ export default {
     SignupLogin,
     CategoriesSlider,
     Card,
-    ModalCategories 
+    ModalCategories,
+    Order
   },
   setup() {
     const isModalOpen = ref(false); 
@@ -73,7 +79,7 @@ html, body {
 
 .main-content {
   flex: 1; 
-  margin-top: 140px; 
+  margin-top: 110px; 
   width: 100%;
 }
 </style>
