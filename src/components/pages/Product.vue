@@ -122,7 +122,6 @@ export default {
 </script>
 
 <style scoped>
-/* === GENEL SAYFA AYARLARI === */
 .product-page-container {
   font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
   color: #111;
@@ -133,7 +132,6 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; padding: 0; margin: 0; }
 button { font-family: inherit; cursor: pointer; }
 
-/* === HEADER (Basit) === */
 .site-header { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #dfdfdf; z-index: 1000; padding: 15px 30px; }
 .header-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .header-left { display: flex; gap: 15px; align-items: center; }
@@ -146,34 +144,28 @@ button { font-family: inherit; cursor: pointer; }
 .icon-btn { background: none; border: none; position: relative; }
 .badge { position: absolute; top: -5px; right: -5px; background: #0058a3; color: white; width: 18px; height: 18px; border-radius: 50%; font-size: 10px; display: flex; align-items: center; justify-content: center; }
 
-/* === BREADCRUMB === */
 .breadcrumb { padding: 15px 30px; font-size: 12px; color: #111; max-width: 1400px; margin: 0 auto; }
 .breadcrumb ul { display: flex; gap: 5px; flex-wrap: wrap; }
 .breadcrumb li::after { content: '/'; margin-left: 5px; color: #111; }
 .breadcrumb li:last-child::after { content: ''; }
 .breadcrumb li.active { color: #111;  }
 
-/* === GRID LAYOUT === */
 .main-content { max-width: 1400px; margin: 0 auto; padding: 0 30px 80px 30px; }
 .product-grid { display: grid; grid-template-columns: 1fr; gap: 60px; }
 
-/* === SOL KOLON === */
 .left-column { display: flex; flex-direction: column; gap: 40px; }
 .image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .image-container { background: #f5f5f5; aspect-ratio: 4/3; overflow: hidden; }
 .product-image { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
 .product-description-area { max-width: 800px; font-size: 16px; line-height: 1.6; color: black; }
 
-/* === SAĞ SIDEBAR (ÖZEL AYARLAR) === */
 .details-section { position: relative; }
 .sticky-wrapper { position: relative; }
 
-/* Başlık */
 .product-title { font-size: 20px; font-weight: 800; text-transform: uppercase; margin: 0; line-height: 1.2;color: #111; }
 .product-sub { font-size: 14px; color: #484848; margin-top: 5px; margin-bottom: 15px; }
 .price { font-size: 28px; font-weight: 800; display: block; margin-bottom: 15px; color: #111;}
 
-/* SKU Badge */
 .sku-section { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
 .sku-badge { background: black; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; letter-spacing: 0.5px; }
 .info-icon-circle {
@@ -181,12 +173,10 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 10px; display: flex; align-items: center; justify-content: center; color: #666; font-family: serif; font-weight: bold;
 }
 
-/* Taksit Metni */
 .installment-text { font-size: 12px; color: #484848; line-height: 1.5; margin-bottom: 30px; }
 .installment-text a { color: #0058a3; text-decoration: underline; font-weight: 600; }
 .credit-info { margin-top: 5px; }
 
-/* Liste Yapısı */
 .sidebar-list { border-top: 1px solid #dfdfdf; }
 .list-item { 
   padding: 20px 0; 
@@ -202,18 +192,15 @@ button { font-family: inherit; cursor: pointer; }
 .list-value { margin-left: 5px; font-weight: 400; color: #111; }
 .list-value-block { display: block; margin-top: 5px; font-size: 14px; color: #484848; }
 
-/* Renk Seçimi Thumbnails */
 .color-thumbnails { display: flex; gap: 10px; }
 .color-box { width: 60px; height: 40px; border: 1px solid #dfdfdf; padding: 2px; cursor: pointer; }
 .color-box.active { border: 2px solid black; }
 .color-box img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Ok işareti */
 .arrow-right { position: absolute; right: 0; top: 20px; color: #111; width: 18px; }
-.has-arrow .arrow-right { top: 35px; } /* Renk kutusunda biraz daha aşağıda */
+.has-arrow .arrow-right { top: 35px; }
 .has-arrow.clickable .arrow-right { top: 20px; }
 
-/* Alt Butonlar */
 .action-buttons { display: flex; gap: 15px; margin-top: 10px; }
 .add-btn {
   flex: 1;
@@ -245,12 +232,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 .fav-btn:hover { border-color: #111; }
 
-/* Responsive */
 @media (min-width: 768px) {
   .search-container { display: block; }
   .product-grid { grid-template-columns: 2fr 1fr; }
   .sticky-wrapper { position: sticky; top: 100px; }
-  /* Masaüstünde ok işareti hizalamaları */
   .list-item .arrow-right { top: 22px; }
 }
 @media (max-width: 767px) {

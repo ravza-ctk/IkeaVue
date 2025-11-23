@@ -137,11 +137,10 @@ body, html {
   color: #484848;
 }
 
-/* MAIN GRID */
 .main-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 60px; /* İki sütun arasındaki geniş boşluk */
+  gap: 60px; 
 }
 
 .blue-box {
@@ -211,7 +210,7 @@ body, html {
   width: 100%;
   height: 48px;
   border: 1px solid #dfdfdf;
-  border-radius: 2px; /* Hafif köşe */
+  border-radius: 2px; 
   padding: 0 15px;
   font-size: 16px;
   color: #111;
