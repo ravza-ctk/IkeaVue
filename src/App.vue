@@ -23,6 +23,18 @@
       <Order /> 
     </main>
 
+    <main class="main-content">
+      <Product /> 
+    </main>
+
+    <main class="main-content">
+      <StoresPage /> 
+    </main>
+
+    <main class="main-content">
+      <FoodsMenuPages /> 
+    </main>
+
     <Footer />
   </div>
 </template>
@@ -36,6 +48,9 @@ import CategoriesSlider from "./components/pages/CategoriesSlider.vue";
 import Card from "./components/pages/Card.vue";
 import ModalCategories from './components/pages/ModalCategories.vue'; 
 import Order from './components/pages/Order.vue';
+import Product from './components/pages/Product.vue';
+import StoresPage from './components/pages/StoresPage.vue';
+import FoodsMenuPages from './components/pages/FoodsMenuPages.vue';
 
 export default {
   name: "App",
@@ -46,7 +61,11 @@ export default {
     CategoriesSlider,
     Card,
     ModalCategories,
-    Order
+    Order,
+    Product,
+    StoresPage,
+    FoodsMenuPages
+
   },
   setup() {
     const isModalOpen = ref(false); 
