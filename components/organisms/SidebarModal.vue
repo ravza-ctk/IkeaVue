@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { text: 'Mağazalarımız', href: '#' },
+        { text: 'Mağazalarımız', href: '/stores' },
         { text: 'Hizmetler', href: '#' },
         { text: 'İyi Fikirler', href: '#' },
         { text: 'Sipariş Takibi', href: '#' },
@@ -55,7 +55,7 @@ export default {
         { text: 'Sosyal Sorumluluk', href: '#' },
         { text: 'IKEA Aile', href: '#' },
         { text: 'IKEA Kurumsal Satış', href: '#' },
-        { text: 'İsveç Restoranı', href: '#' },
+        { text: 'İsveç Restoranı', href: '/restaurant' },
       ]
     };
   }

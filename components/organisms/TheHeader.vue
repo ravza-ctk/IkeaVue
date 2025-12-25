@@ -19,7 +19,9 @@
     <div class="top-bar">
       <span @click="$emit('open-modal')" class="menu-icon">☰</span>
 
-      <BaseLogo class="header-logo" />
+      <NuxtLink to="/" class="logo-link">
+        <BaseLogo class="header-logo" />
+      </NuxtLink>
 
       <SearchBar />
 
@@ -102,7 +104,7 @@ export default {
   gap: 25px;
 }
 .menu-icon { font-size: 24px; cursor: pointer; color: black; }
-.header-logo { height: 35px; }
+.header-logo { height: 35px; max-width: none; }
 .user-actions { display: flex; gap: 15px; align-items: center; color:black }
 .icon-link { cursor: pointer; font-size: 14px; font-weight: 600;color:black}
 .cart-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; text-decoration: none !important; }

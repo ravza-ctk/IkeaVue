@@ -1,31 +1,27 @@
 <template>
   <div class="ikea-page-full">
-    <main class="main-content-full">
-      
-      <BaseText variant="page-title" tag="h1">Mağazalarımız</BaseText>
+    <!-- Hero Image Section (Full Width) -->
+    <div class="hero-box">
+      <img 
+        src="https://cdn.ikea.com.tr/_assets/images/ikea-store.jpg" 
+        alt="IKEA Mağaza" 
+        class="hero-image"
+      />
+    </div>
 
-      <div class="content-split">
-        
-        <div class="hero-box">
-          <img 
-            src="https://cdn.ikea.com.tr/_assets/images/ikea-store.jpg" 
-            alt="IKEA Mağaza" 
-            class="hero-image"
+    <!-- Main Content (Constrained Width) -->
+    <main class="main-content-full">
+      <BaseText variant="page-title" tag="h1" class="page-title">Mağazalarımız</BaseText>
+
+      <div class="list-box">
+        <div class="stores-grid">
+          <StoreCard 
+            v-for="(store, index) in stores" 
+            :key="index" 
+            :store="store" 
           />
         </div>
-
-        <div class="list-box">
-          <div class="stores-grid">
-            <StoreCard 
-              v-for="(store, index) in stores" 
-              :key="index" 
-              :store="store" 
-            />
-          </div>
-        </div>
-
       </div>
-
     </main>
   </div>
 </template>
@@ -58,56 +54,52 @@ const stores = [
   color: #111;
   background: #fff;
   overflow-x: hidden;
+  padding-top: 50px; /* Header space */
 }
 
-.main-content-full {
-  width: 70vw; 
-  margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 60px;
-}
-
-.content-split {
-  display: flex;
-  width: 100%;
-  gap: 3%;
-}
-
+/* Hero Box - Full Width */
 .hero-box {
-  width: 42%;
-  flex-shrink: 0;
+  width: 100%;
+  height: 400px; /* Fixed height for banner look */
+  margin-bottom: 40px;
 }
 
 .hero-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover; /* Cover the area */
   display: block;
-  object-fit: cover;
+}
+
+/* Main Content */
+.main-content-full {
+  max-width: 1200px; 
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.page-title {
+  margin-bottom: 30px;
 }
 
 .list-box {
-  width: 55%;
-  flex-grow: 1;
+  width: 100%;
 }
 
 .stores-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
-  gap: 40px 20px;
-}
-
-@media (max-width: 1200px) {
-  .stores-grid { grid-template-columns: repeat(2, 1fr); }
-  .content-split { gap: 40px; }
+  gap: 30px;
 }
 
 @media (max-width: 900px) {
-  .content-split { flex-direction: column; gap: 30px; }
-  .hero-box, .list-box { width: 100%; }
+  .stores-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-box { height: 250px; }
 }
 
 @media (max-width: 600px) {
-  .main-content-full { width: 95vw; padding: 15px; }
   .stores-grid { grid-template-columns: 1fr; }
+  .hero-box { height: 200px; }
 }
 </style>
