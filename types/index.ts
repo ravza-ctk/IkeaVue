@@ -7,6 +7,10 @@ export interface Product {
     image: string;
     images?: string[];
     stock: number;
+    sku?: string;
+    dimensions?: any;
+    color?: string;
+    material?: string;
 }
 
 export interface Category {

@@ -1,7 +1,7 @@
 <template>
   <div class="cart-page">
     <div class="page-title">
-      <BaseText variant="page-title" tag="h2">Alışveriş Sepeti</BaseText>
+      <BaseText variant="page-title" tag="h2">Alışveriş Sepeti ({{ cartStore.totalItems }} Ürün)</BaseText>
       <BaseButton variant="icon" size="icon-24">
          <span style="font-weight:bold; font-size: 20px; line-height: 0.5; padding-bottom: 10px;">...</span>
       </BaseButton>
@@ -46,32 +46,21 @@
         
         <ServiceBar />
 
-        <!-- Hardcoded Product Item -->
-        <div>
+        <!-- Dynamic Product Items -->
+         <div v-if="cartStore.loading">Sepetiniz yükleniyor...</div>
+         <div v-else-if="cartStore.cartItems.length === 0">Sepetinizde ürün bulunmamaktadır.</div>
+        <div v-else>
             <div class="montaj-section">
                 <!-- Placeholder for "Montaj Hizmeti Almak İstiyorum" -->
                 <label class="checkbox-container">
-            
                     <span class="label-text"></span>
                 </label>
             </div>
             
-            <ProductItem :product="{
-                brand: 'HAUGA',
-                desc: 'HAUGA mutfak masası, beyaz',
-                dim: '118x74 cm',
-                unitPrice: 5499,
-                sku: '005.767.09',
-                image: 'https://cdn.ikea.com.tr/urunler/2000_2000/PE794503.jpg' 
-            }" />
-            <!-- Using a real IKEA image link for HAUGA table if valid, or similar. 
-                 If this 404s, it's just a broken image, safer to use placeholder? 
-                 I'll try a generic white table placeholder or the one from user request context if possible.
-                 Actually I will use a placeholder service to be safe or empty.
-                 The user didn't give a URL. 
-                 Let's stick to a generated placeholder URL to avoid broken external links.
-                 'https://via.placeholder.com/150'
-            -->
+            <div v-for="item in cartStore.cartItems" :key="item.productId" class="cart-item-wrapper" style="margin-bottom: 20px;">
+                <ProductItem :product="mapItemToProduct(item)" />
+                <div @click="removeFromCart(item.id!)" style="color: red; cursor: pointer; text-align: right; font-size: 12px; text-decoration: underline; margin-top: 5px;">Ürünü Kaldır</div>
+            </div>
         </div>
 
         <hr class="section-divider" />
@@ -87,9 +76,9 @@
       </div>
       <div class="right-column">
         <OrderSummary 
-            :subtotal="5499" 
-            :shipping="799" 
-            :total="6298" 
+            :subtotal="cartStore.totalPrice" 
+            :shipping="cartStore.totalItems > 0 ? 799 : 0" 
+            :total="cartStore.totalPrice + (cartStore.totalItems > 0 ? 799 : 0)" 
         />
       </div>
     </div>
@@ -97,20 +86,28 @@
 </template>
 
 <script setup lang="ts">
-import { useOrderStore } from '~/stores/useOrderStore';
+import { useCartStore } from '~/stores/useCartStore';
+import { onMounted } from 'vue';
 
 definePageMeta({
   layout: 'default'
 });
 
-const orderStore = useOrderStore();
+const cartStore = useCartStore();
+
+onMounted(() => {
+    cartStore.fetchCart();
+});
+
+const removeFromCart = async (id: string) => {
+    await cartStore.removeFromCart(id);
+};
 
 // Helper to map cart item to ProductItem component prop structure
-// The existing ProductItem expects a 'product' prop with { brand, desc, dim, unitPrice, sku, image }
 const mapItemToProduct = (item: any) => ({
     brand: item.name,
-    desc: 'Item Description',
-    dim: 'Standard',
+    desc: item.name, // Using name as description since we store minimal data
+    dim: 'Standart',
     unitPrice: item.price,
     sku: item.productId,
     image: item.image

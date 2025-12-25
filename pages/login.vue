@@ -5,20 +5,10 @@
       <div class="main-grid">
         <InfoBanner v-if="!userStore.user" />
         
-        <div v-if="userStore.user" class="profile-section">
-            <h2>Hoşgeldiniz, {{ userStore.user.displayName }}</h2>
-            <p>E-posta: {{ userStore.user.email }}</p>
-            <div class="update-form">
-                <h3>Bilgilerimi Güncelle</h3>
-                <BaseField label="Ad Soyad">
-                    <BaseInput v-model="newName" :placeholder="userStore.user.displayName" />
-                </BaseField>
-                <BaseButton variant="blue" @click="updateProfile">Güncelle</BaseButton>
-            </div>
-            <br>
-            <BaseButton variant="secondary" @click="logout">Çıkış Yap</BaseButton>
+        <LoginForm v-if="!userStore.user" />
+        <div v-else class="loading-state">
+             <p>Giriş yapıldı, yönlendiriliyorsunuz...</p>
         </div>
-        <LoginForm v-else />
       </div>
     </div>
   </div>
@@ -26,33 +16,26 @@
 
 <script setup lang="ts">
 import { useUserStore } from '~/stores/useUserStore';
-import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { watchEffect } from 'vue';
 
 definePageMeta({
   layout: 'default' 
 });
 
 const userStore = useUserStore();
-const newName = ref("");
+const router = useRouter();
 
 const breadcrumbItems = [
   { text: 'Ana Sayfa', href: '/' },
-    { text: 'Üye Girişi' }
+  { text: 'Üye Girişi' }
 ];
 
-const updateProfile = async () => {
-   // In a real app, we would call userStore.updateProfile(newName.value)
-   // For now demonstrating logic
-   if (newName.value) {
-       // Mock update in store or strictly implement it
-       alert("Profil güncellendi: " + newName.value);
-   }
-};
-
-const logout = () => {
-    userStore.user = null; // Simple logout
-    // userStore.logout(); // If implemented
-};
+watchEffect(() => {
+    if (userStore.user) {
+        router.push('/account');
+    }
+});
 </script>
 
 <style scoped>
@@ -76,6 +59,13 @@ const logout = () => {
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
+}
+
+.loading-state {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding: 50px;
 }
 
 @media (max-width: 900px) {

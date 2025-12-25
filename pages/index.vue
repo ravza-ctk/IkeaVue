@@ -3,8 +3,6 @@
     <CategorySlider />
     
     <ul>
-      <li><NuxtLink to="/admin">Admin</NuxtLink></li>
-      <li><NuxtLink to="/products">Ürünler</NuxtLink></li>
     </ul>
   </div>
 </template>
