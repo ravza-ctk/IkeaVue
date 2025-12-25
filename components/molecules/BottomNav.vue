@@ -1,6 +1,6 @@
 <template>
   <nav class="bottom-nav">
-    <BaseLink variant="nav">Ürünler</BaseLink>
+    <BaseLink variant="nav" href="/products">Ürünler</BaseLink>
     <BaseLink variant="nav">Odalar</BaseLink>
     <BaseLink variant="nav" color="#cc0008">Fırsatlar</BaseLink>
     <BaseLink variant="nav">ŞAHANE KASIM</BaseLink>

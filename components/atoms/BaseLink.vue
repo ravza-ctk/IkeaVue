@@ -1,6 +1,16 @@
 <template>
-  <component 
-    :is="tag" 
+  <NuxtLink 
+    v-if="isInternal"
+    :to="href"
+    class="base-link-atom" 
+    :class="[`variant-${variant}`, { 'active': active }]"
+    :style="{ color: color !== 'inherit' ? color : undefined }"
+    @click="$emit('click', $event)"
+  >
+    <slot>{{ text }}</slot>
+  </NuxtLink>
+  <a 
+    v-else-if="href"
     :href="href" 
     class="base-link-atom" 
     :class="[`variant-${variant}`, { 'active': active }]"
@@ -8,7 +18,16 @@
     @click="$emit('click', $event)"
   >
     <slot>{{ text }}</slot>
-  </component>
+  </a>
+  <span 
+    v-else
+    class="base-link-atom" 
+    :class="[`variant-${variant}`, { 'active': active }]"
+    :style="{ color: color !== 'inherit' ? color : undefined }"
+    @click="$emit('click', $event)"
+  >
+    <slot>{{ text }}</slot>
+  </span>
 </template>
 
 <script>
@@ -31,9 +50,8 @@ export default {
   },
   emits: ['click'],
   computed: {
-    tag() {
-      // If href is present, use 'a', otherwise 'span' (like NavLink)
-      return this.href ? 'a' : 'span';
+    isInternal() {
+      return this.href && this.href.startsWith('/');
     }
   }
 }

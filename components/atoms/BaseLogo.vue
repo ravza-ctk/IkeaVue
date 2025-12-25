@@ -9,8 +9,7 @@
 <style scoped>
 .base-logo {
   display: block;
-  /* Parent determines width/height */
-  max-width: 100%;
+  max-width: 150px;
   height: auto;
 }
 </style>

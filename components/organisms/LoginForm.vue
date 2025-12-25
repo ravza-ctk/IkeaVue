@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useUserStore } from '~/stores/useUserStore';
+import { useRouter } from 'vue-router';
 
 const userStore = useUserStore();
 const phoneNumber = ref("");
@@ -31,19 +32,40 @@ const handleSubmit = async () => {
     return;
   }
 
-  // Mock phone login
   if (phoneNumber.value.length < 10) {
       alert("Lütfen geçerli bir telefon numarası giriniz.");
       return;
   }
   
-  // For demo/mock purposes, just log in with a fake email based on phone
-  await userStore.login(phoneNumber.value + "@example.com", "mockpassword");
+  const email = phoneNumber.value + "@example.com";
+  const password = "mockpassword123"; // Stronger password required by some policies?
+
+  // Try to login first
+  await userStore.login(email, password);
 
   if (userStore.error) {
-      alert("Hata: " + userStore.error);
+      // If login failed, check if user needs to be registered
+      if (userStore.error.includes("user-not-found") || userStore.error.includes("invalid-credential")) {
+          // Reset error
+          userStore.error = null;
+          // Try to register
+          await userStore.register(email, password, "User " + phoneNumber.value);
+          
+          if (userStore.error) {
+               alert("Kayıt hatası: " + userStore.error);
+          } else {
+               alert("Hesap oluşturuldu ve giriş yapıldı!");
+               // Redirect or update UI?
+               const router = useRouter();
+               router.push('/account');
+          }
+      } else {
+          alert("Giriş Hatası: " + userStore.error);
+      }
   } else {
       alert("Giriş Başarılı!");
+      const router = useRouter();
+      router.push('/account');
   }
 };
 </script>

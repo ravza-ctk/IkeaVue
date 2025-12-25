@@ -25,7 +25,7 @@
           :key="index" 
           class="slider-card"
         >
-          <div class="image-wrapper">
+          <div class="image-wrapper" @click="openModal(item)" style="cursor:pointer;">
             <img :src="item.image" :alt="item.title" loading="lazy" />
             <div class="card-btn">
               {{ item.title }}
@@ -55,12 +55,15 @@
     </div>
 
   </div>
+  <CategoryModal :isOpen="modalOpen" :category="selectedCategory" @close="modalOpen = false" />
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import BaseText from '../atoms/BaseText.vue';
 import BaseButton from '../atoms/BaseButton.vue';
+import CategoryModal from '../organisms/CategoryModal.vue';
+
 
 const categories = ref([
   { title: "Yemek Masaları", image: "https://image-ikea.mncdn.com/ozgur-icerik/ana-sayfa/cy26-kasim/ikea-yemek-masalari.jpg" },
@@ -72,6 +75,15 @@ const categories = ref([
   { title: "Bardaklar", image: "https://image-ikea.mncdn.com/ozgur-icerik/ana-sayfa/cy26-kasim/ikea-bardaklar.jpg" },
   { title: "Peçeteler", image: "https://image-ikea.mncdn.com/ozgur-icerik/ana-sayfa/cy26-kasim/ikea-peceteler.jpg" }
 ]);
+
+// Modal state
+const modalOpen = ref(false);
+const selectedCategory = ref({ title: '', image: '' });
+
+function openModal(category) {
+  selectedCategory.value = category;
+  modalOpen.value = true;
+}
 
 const scrollContainer = ref(null);
 const thumbWidth = ref(20); 

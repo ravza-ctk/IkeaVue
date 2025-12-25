@@ -2,7 +2,7 @@
   <div class="brand-section">
     <BaseLogo class="ikea-logo-molecule" />
     <div class="main-titles">
-      <h1>Ürünler</h1>
+      <h1><NuxtLink to="/products" style="color: inherit; font-weight: 700; text-decoration: none;">Ürünler</NuxtLink></h1>
       <h1>Odalar</h1>
     </div>
   </div>
